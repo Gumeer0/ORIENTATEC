@@ -1,0 +1,1521 @@
+/* ===========================
+   GLOBAL & RESET
+   =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #e0f2ff;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Páginas ahora son archivos HTML separados */
+
+a { text-decoration: none; }
+
+/* ===========================
+   HEADER
+   =========================== */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 60px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+.logo-section img {
+    height: 50px;
+    margin-right: 10px;
+}
+.logo-section span {
+    font-weight: bold;
+    color: #0b3d91;
+    font-size: 1.1em;
+}
+nav a {
+    color: #0b3d91;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+nav a:hover { color: #00c3ff; }
+.btn-sesion {
+    background: #0b3d91;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* ---- Hamburger Button ---- */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #0b3d91;
+    cursor: pointer;
+    padding: 5px 10px;
+    line-height: 1;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+.hamburger:hover {
+    background: #f0f8ff;
+}
+
+/* ---- Google Login ---- */
+.google-divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 15px;
+    gap: 10px;
+}
+.google-divider::before,
+.google-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+}
+.google-divider span {
+    color: #999;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* ---- User Section (Menu) ---- */
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0b3d91;
+}
+
+/* ---- Google Sign-In Button ---- */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    background: white;
+    color: #3c4043;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.google-btn:hover {
+    background: #f8f9fa;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.google-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+.google-btn svg {
+    flex-shrink: 0;
+}
+
+/* ===========================
+   HERO (Landing)
+   =========================== */
+.hero-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #f0f8ff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero-text { max-width: 50%; }
+.hero-text h1 {
+    font-size: 2.8em;
+    color: #0b3d91;
+    margin-bottom: 15px;
+}
+.hero-text p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+.hero-image img {
+    max-width: 400px;
+    height: auto;
+}
+.btn-comenzar {
+    background: #ff5733;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s;
+}
+.btn-comenzar:hover { background: #e64a27; }
+
+.info-cards {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: -50px auto 50px auto;
+}
+.info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 30%;
+    transition: transform 0.3s;
+    cursor: pointer;
+    color: #0b3d91;
+}
+.info-card:hover { transform: translateY(-5px); }
+.info-card img { width: 50px; margin-bottom: 10px; }
+
+/* ===========================
+   LOGIN
+   =========================== */
+.login-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../static/fon.png') no-repeat center center fixed;
+    background-size: cover;
+}
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    width: 350px;
+    text-align: center;
+}
+.login-box h2 {
+    margin-bottom: 30px;
+    color: #0b3d91;
+}
+.login-box form {
+    display: flex;
+    flex-direction: column;
+}
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+.login-box button {
+    background-color: #0b3d91;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 15px;
+}
+.login-box button:hover { background-color: #062d6f; }
+.toggle { margin-top: 15px; font-size: 0.9em; }
+.toggle a { cursor: pointer; color: #0b3d91; font-weight: bold; }
+.toggle a:hover { text-decoration: underline; }
+.error { color: red; margin-top: 10px; font-weight: bold; }
+
+/* ===========================
+   MENÚ
+   =========================== */
+.menu-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
+    padding: 10px 60px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
+#usuario-btn {
+    font-weight: bold;
+    color: #0b3d91;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #f0f8ff;
+}
+#user-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    min-width: 150px;
+    z-index: 1000;
+}
+#user-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #0b3d91;
+    transition: 0.2s;
+}
+#user-menu a:hover { background-color: #f0f8ff; }
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+.menu-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+    color: inherit;
+    height: 180px;
+}
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.menu-card img { width: 60px; margin-bottom: 10px; }
+.menu-card h3 { color: #0b3d91; margin-bottom: 5px; }
+.menu-card p { color: #555; font-size: 14px; }
+.card-foro {
+    grid-column: 1 / -1;
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* ===========================
+   CUESTIONARIO
+   =========================== */
+.back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #0b3d91;
+    font-weight: 600;
+}
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    margin-top: 20px;
+}
+.quiz-title {
+    text-align: center;
+    color: #ff5733;
+    margin-bottom: 30px;
+}
+.section-title {
+    font-size: 1.4em;
+    color: #0b3d91;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #00c3ff;
+    padding-bottom: 5px;
+}
+.question {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+.question p {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+.option-group {
+    display: flex;
+    flex-direction: column;
+}
+.option-group label {
+    padding: 8px 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.option-group label:hover { background-color: #f0f8ff; }
+.option-group input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #0b3d91;
+}
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s;
+}
+.submit-btn:hover { background-color: #e64a27; }
+
+/* ===========================
+   RESULTADOS
+   =========================== */
+.page-resultados-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+.contenedor-resultado {
+    max-width: 600px;
+    background: #ffffed;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+.contenedor-resultado h2 {
+    color: #0b3d91;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+.header-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+.area-image-lateral {
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+}
+.area-nombre {
+    font-size: 1.8em;
+    color: #00c3ff;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+.result-box {
+    background-color: #fffacd;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+}
+.result-box ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    color: #333;
+}
+.result-box ul li {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+.btn-detalles {
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
+    transition: background 0.3s, transform 0.2s;
+}
+.btn-detalles:hover {
+    background-color: #e64a27;
+    transform: translateY(-2px);
+}
+.image-box-fija {
+    position: absolute;
+    left: 5%;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+.image-box-fija img {
+    max-width: 150px;
+    height: auto;
+    opacity: 0.9;
+}
+
+/* ===========================
+   CARRERAS
+   =========================== */
+.page-title {
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #0b3d91;
+    text-align: center;
+    padding-top: 20px;
+}
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.career-card {
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s;
+}
+.career-card:hover { transform: translateY(-5px); }
+.career-card h3 { color: #0b3d91; font-size: 1.5em; margin-bottom: 10px; }
+.career-card p { color: #555; font-size: 0.9em; line-height: 1.4; text-align: left; }
+.ver-mas {
+    background: #ff5733;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    margin-top: 15px;
+    transition: background 0.3s;
+    text-align: center;
+}
+.ver-mas:hover { background: #e64a27; }
+.icon { width: 250px; margin-bottom: 15px; }
+.bg-yellow { background-color: #fffac8; }
+.bg-green { background-color: #e6ffe6; }
+.bg-blue { background-color: #e6f7ff; }
+
+/* ===========================
+   CARRERAS DETALLE (Ingenierías, Licenciaturas, Medicina)
+   =========================== */
+.header-section {
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+.header-section h1 {
+    font-size: 2.5em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-weight: 700;
+}
+.header-section img {
+    width: 250px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.header-blue { background-color: #e0f2ff; }
+.header-blue h1 { color: #0c4a6e; }
+.header-green { background-color: #dcfce7; }
+.header-green h1 { color: #166534; }
+.header-red { background-color: #fee2e2; }
+.header-red h1 { color: #991b1b; }
+
+.back-link-blue { color: #0c4a6e; }
+.back-link-green { color: #166534; }
+.back-link-red { color: #991b1b; }
+
+.content-list {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+}
+.content-list ul {
+    list-style: none;
+    padding: 0;
+    width: 48%;
+}
+.content-list ul li {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+}
+.content-list ul li:hover {
+    transform: translateX(5px);
+}
+.content-list-ingenierias ul li:hover { background-color: #f5faff; }
+.content-list-licenciaturas ul li:hover { background-color: #ecfdf5; }
+.content-list-medicina ul li:hover { background-color: #fff5f5; }
+
+/* ===========================
+   MODAL (Carreras)
+   =========================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.modal.show { display: flex; }
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 0.75rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-button:hover { color: #333; }
+#modalTitle {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+.modal-subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin: 4px 0 16px;
+    text-align: center;
+    font-weight: 500;
+}
+.link-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: white;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.link-button:active { transform: scale(0.98); }
+.btn-tecnm { background-color: #1e40af; }
+.btn-tecnm:hover { background-color: #1e3a8a; }
+.btn-itesco { background-color: #059669; }
+.btn-itesco:hover { background-color: #047857; }
+.btn-uv-coatza { background-color: #6d28d9; }
+.btn-uv-coatza:hover { background-color: #5b21b6; }
+.btn-uv-mina { background-color: #f97316; }
+.btn-uv-mina:hover { background-color: #ea580c; }
+
+/* ===========================
+   BECAS
+   =========================== */
+.contenedor-becas {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+.contenedor-becas h1 {
+    font-size: 2.5em;
+    color: #0b3d91;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.contenedor-becas h3 {
+    font-size: 1.2em;
+    color: #0b3d91;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.institucion {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+.institucion img {
+    max-width: 70px;
+    height: auto;
+    margin-top: 5px;
+}
+.beca-list { list-style: disc; padding-left: 20px; }
+.link { color: #ff5733; font-weight: bold; }
+.link:hover { text-decoration: underline; }
+
+/* ===========================
+   UNIVERSIDADES
+   =========================== */
+.universities-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.university-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: inherit;
+}
+.university-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.university-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+.university-info { flex-grow: 1; }
+.university-info h2 {
+    margin: 0 0 5px 0;
+    color: #ff5733;
+    font-size: 1.5em;
+}
+.university-info p {
+    margin: 0;
+    color: #555;
+    font-size: 1em;
+}
+
+/* ===========================
+   FORO
+   =========================== */
+.forum-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+}
+.forum-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #0b3d91;
+    text-align: center;
+}
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.back { color: #0b3d91; font-weight: bold; }
+.create-post {
+    background: #ffffed;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+.create-post input,
+.create-post textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-size: 14px;
+}
+.create-post button {
+    float: right;
+    background: #0b3d91;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.create-post button:hover { background: #062d6f; }
+.topic-wrapper {
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+.topic-card {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topic-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topic-title img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+}
+.btn-small {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0b3d91;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 13px;
+    margin-left: 8px;
+}
+.btn-small.secondary {
+    background: #f4f7fb;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+.responses-container {
+    display: none;
+    padding: 12px 18px 18px;
+    border-top: 1px solid #eee;
+    background: #fcfcfc;
+}
+.response {
+    border-left: 3px solid #ff5733;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+.response-user {
+    font-weight: bold;
+    color: #0b3d91;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.reply-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+.reply-form textarea {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+}
+.reply-form button {
+    background: #0b3d91;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+/* ===========================
+   EDIT MODALS
+   =========================== */
+.edit-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    z-index: 2000;
+}
+.edit-overlay.show { display: flex; }
+.edit-box {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+}
+.edit-box h3 {
+    color: #0b3d91;
+    margin-bottom: 15px;
+}
+.edit-box input,
+.edit-box textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-size: 14px;
+}
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.edit-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    background: #0b3d91;
+    color: white;
+}
+.edit-buttons button.cancel {
+    background: #ccc;
+    color: #333;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+/* ---- Tablet / Pantallas medianas (max 1024px) ---- */
+@media (max-width: 1024px) {
+    .main-header {
+        padding: 10px 30px;
+    }
+    nav a {
+        margin-left: 15px;
+        font-size: 0.95em;
+    }
+    .hero-container {
+        max-width: 95%;
+        padding: 25px;
+        margin: 30px auto;
+    }
+    .hero-text h1 {
+        font-size: 2.2em;
+    }
+    .hero-image img {
+        max-width: 300px;
+    }
+    .info-cards {
+        max-width: 95%;
+    }
+    .menu-container {
+        max-width: 95%;
+        gap: 20px;
+    }
+    .quiz-container {
+        max-width: 95%;
+        padding: 30px;
+    }
+    .contenedor-becas {
+        max-width: 95%;
+        padding: 30px;
+    }
+    .universities-container {
+        max-width: 95%;
+    }
+    .forum-container {
+        max-width: 95%;
+    }
+    .card-container {
+        max-width: 95%;
+        gap: 20px;
+    }
+    .career-card {
+        width: 260px;
+    }
+    .header-section {
+        max-width: 95%;
+    }
+    .content-list {
+        max-width: 95%;
+    }
+}
+
+/* ---- Tablet pequeña / Landscape phone (max 768px) ---- */
+@media (max-width: 768px) {
+    /* Header & Nav — Hamburger */
+    .main-header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px 20px;
+        gap: 0;
+    }
+    .hamburger {
+        display: block;
+        order: 2;
+    }
+    #nav-public {
+        display: none;
+        width: 100%;
+        order: 3;
+        flex-direction: column;
+        background: white;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+        margin-top: 8px;
+    }
+    #nav-public.nav-open {
+        display: flex;
+    }
+    nav a {
+        margin-left: 0;
+        font-size: 1em;
+        padding: 10px 15px;
+        border-radius: 6px;
+    }
+    nav a:hover {
+        background: #f0f8ff;
+    }
+    .logo-section {
+        order: 1;
+        flex: 1;
+    }
+    .logo-section span {
+        font-size: 0.95em;
+    }
+
+    /* Hero */
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        margin: 20px auto;
+        padding: 25px 20px;
+    }
+    .hero-text {
+        max-width: 100%;
+    }
+    .hero-text h1 {
+        font-size: 1.9em;
+    }
+    .hero-text p {
+        font-size: 1em;
+    }
+    .hero-image img {
+        max-width: 250px;
+        margin-top: 20px;
+    }
+    .btn-comenzar {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+
+    /* Info Cards */
+    .info-cards {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .info-card {
+        width: 80%;
+        margin-bottom: 15px;
+    }
+
+    /* Login */
+    .login-box {
+        width: 90%;
+        max-width: 350px;
+        padding: 30px 25px;
+    }
+
+    /* Menú */
+    .menu-header {
+        padding: 10px 20px;
+    }
+    .menu-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+        margin: 30px auto;
+    }
+    .card-foro {
+        width: 100%;
+    }
+    .menu-card {
+        height: auto;
+        padding: 20px;
+    }
+
+    /* Cuestionario */
+    .quiz-container {
+        padding: 25px 20px;
+        margin-top: 50px;
+    }
+    .quiz-title {
+        font-size: 1.3em;
+    }
+    .section-title {
+        font-size: 1.2em;
+    }
+    .question p {
+        font-size: 1em;
+    }
+    .submit-btn {
+        font-size: 1em;
+        padding: 12px;
+    }
+
+    /* Resultados */
+    .image-box-fija {
+        display: none;
+    }
+    .contenedor-resultado {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+    .contenedor-resultado h2 {
+        font-size: 1.6em;
+    }
+    .header-area {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .area-image-lateral {
+        width: 50px;
+    }
+    .area-nombre {
+        font-size: 1.4em;
+    }
+
+    /* Carreras */
+    .page-title {
+        font-size: 1.5em;
+        padding-top: 50px;
+    }
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .career-card {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
+    }
+    .icon {
+        width: 150px;
+    }
+
+    /* Carreras Detalle */
+    .header-section {
+        margin-top: 50px;
+        padding: 20px;
+    }
+    .header-section h1 {
+        font-size: 1.8em;
+    }
+    .header-section img {
+        width: 150px;
+    }
+    .content-list {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+    .content-list ul {
+        width: 100%;
+    }
+
+    /* Becas */
+    .contenedor-becas {
+        padding: 25px 20px;
+        margin: 50px auto 30px;
+    }
+    .contenedor-becas h1 {
+        font-size: 1.8em;
+    }
+    .institucion {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .institucion img {
+        margin-bottom: 10px;
+    }
+    .beca-list {
+        text-align: left;
+    }
+
+    /* Universidades */
+    .university-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+    }
+    .university-card img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .university-info h2 {
+        font-size: 1.2em;
+    }
+
+    /* Foro */
+    .forum-container {
+        padding: 15px;
+    }
+    .forum-container h1 {
+        font-size: 1.8em;
+    }
+    .top-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .topic-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Modal */
+    .modal-content {
+        max-width: 90%;
+        padding: 20px;
+    }
+    .edit-box {
+        width: 95%;
+    }
+
+    /* Back link */
+    .back-link {
+        position: relative;
+        top: auto;
+        left: auto;
+        display: inline-block;
+        margin: 15px 20px;
+    }
+}
+
+/* ---- Teléfonos / Pantallas pequeñas (max 480px) ---- */
+@media (max-width: 480px) {
+    /* Header */
+    .main-header {
+        padding: 8px 12px;
+    }
+    .logo-section img {
+        height: 35px;
+    }
+    .logo-section span {
+        font-size: 0.8em;
+    }
+    nav a {
+        font-size: 0.78em;
+        padding: 4px 7px;
+    }
+    .btn-sesion {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+
+    /* Hero */
+    .hero-container {
+        margin: 10px auto;
+        padding: 20px 15px;
+    }
+    .hero-text h1 {
+        font-size: 1.5em;
+    }
+    .hero-text p {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+    .hero-image img {
+        max-width: 180px;
+    }
+    .btn-comenzar {
+        padding: 10px 25px;
+        font-size: 0.95em;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Info Cards */
+    .info-card {
+        width: 95%;
+    }
+
+    /* Login */
+    .login-box {
+        width: 95%;
+        padding: 25px 18px;
+    }
+    .login-box h2 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+    .login-box input {
+        padding: 10px;
+        font-size: 13px;
+    }
+    .login-box button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Menú */
+    .menu-header {
+        padding: 8px 15px;
+    }
+    #usuario-btn {
+        font-size: 15px;
+    }
+    #user-menu {
+        right: 15px;
+    }
+    .menu-container {
+        padding: 10px;
+        margin: 20px auto;
+    }
+    .menu-card {
+        padding: 15px;
+    }
+    .menu-card img {
+        width: 45px;
+    }
+    .menu-card h3 {
+        font-size: 1em;
+    }
+
+    /* Cuestionario */
+    .quiz-container {
+        padding: 20px 15px;
+    }
+    .quiz-title {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+    .section-title {
+        font-size: 1.1em;
+        margin-top: 20px;
+    }
+    .question {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    .question p {
+        font-size: 0.95em;
+    }
+    .option-group label {
+        padding: 6px 8px;
+        font-size: 0.9em;
+    }
+
+    /* Resultados */
+    .contenedor-resultado {
+        max-width: 95%;
+        padding: 20px 15px;
+    }
+    .contenedor-resultado h2 {
+        font-size: 1.4em;
+    }
+    .result-box {
+        padding: 20px 15px;
+    }
+    .result-box ul li {
+        font-size: 0.95em;
+    }
+    .btn-detalles {
+        padding: 10px 20px;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Carreras */
+    .page-title {
+        font-size: 1.3em;
+        margin-bottom: 25px;
+    }
+    .career-card {
+        width: 95%;
+        padding: 20px;
+    }
+    .career-card h3 {
+        font-size: 1.2em;
+    }
+    .icon {
+        width: 120px;
+    }
+    .ver-mas {
+        padding: 8px 15px;
+    }
+
+    /* Carreras Detalle */
+    .header-section {
+        padding: 15px;
+        margin-top: 45px;
+    }
+    .header-section h1 {
+        font-size: 1.4em;
+        margin-left: 8px;
+    }
+    .header-section img {
+        width: 100px;
+    }
+    .content-list {
+        padding: 0 10px;
+    }
+    .content-list ul li {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    /* Becas */
+    .contenedor-becas {
+        padding: 20px 15px;
+        margin: 45px 10px 20px;
+    }
+    .contenedor-becas h1 {
+        font-size: 1.5em;
+    }
+    .contenedor-becas h3 {
+        font-size: 1em;
+    }
+    .institucion {
+        padding: 15px;
+        gap: 10px;
+    }
+    .institucion img {
+        max-width: 55px;
+    }
+
+    /* Universidades */
+    .universities-container {
+        padding: 10px;
+    }
+    .university-card {
+        padding: 15px 12px;
+    }
+    .university-card img {
+        width: 60px;
+        height: 60px;
+    }
+    .university-info h2 {
+        font-size: 1em;
+    }
+    .university-info p {
+        font-size: 0.85em;
+    }
+
+    /* Foro */
+    .forum-container {
+        padding: 10px;
+    }
+    .forum-container h1 {
+        font-size: 1.5em;
+    }
+    .create-post {
+        padding: 15px;
+    }
+    .create-post input,
+    .create-post textarea {
+        font-size: 13px;
+        padding: 10px;
+    }
+    .topic-title img {
+        width: 28px;
+        height: 28px;
+    }
+    .btn-small {
+        font-size: 12px;
+    }
+    .reply-form textarea {
+        font-size: 13px;
+    }
+
+    /* Modal */
+    .modal-content {
+        max-width: 95%;
+        padding: 18px;
+    }
+    #modalTitle {
+        font-size: 1.1em;
+    }
+    .link-button {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .edit-box {
+        padding: 18px;
+    }
+    .edit-buttons button {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    /* Back link */
+    .back-link {
+        margin: 10px 12px;
+        font-size: 0.9em;
+    }
+}
