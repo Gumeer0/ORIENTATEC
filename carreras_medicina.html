@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicina y Salud - Orientación Vocacional</title>
+    <meta name="description" content="Lista de carreras de medicina y salud con enlaces a universidades.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="background-color: #fef2f2;">
+
+    <a href="carreras.html" class="back-link back-link-red">← Volver</a>
+    <div class="header-section header-red">
+        <img src="static/carreme.png" alt="Icono Estetoscopio">
+        <h1>Medicina y Salud</h1>
+    </div>
+    <div class="content-list content-list-medicina">
+        <ul id="med-career-list-1"></ul>
+        <ul id="med-career-list-2"></ul>
+    </div>
+
+    <!-- MODAL: CARRERAS (universidad selector) -->
+    <div id="linkModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p class="modal-subtitle">Selecciona la universidad que te gustaría:</p>
+            <div id="linksContainer"></div>
+        </div>
+    </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

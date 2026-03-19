@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingenierías - Orientación Vocacional</title>
+    <meta name="description" content="Lista de carreras de ingeniería con enlaces a universidades.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="background-color: #f0f9ff;">
+
+    <a href="carreras.html" class="back-link back-link-blue">← Volver</a>
+    <div class="header-section header-blue">
+        <img src="static/carreinge.png" alt="Icono Engranaje">
+        <h1>Ingenierías</h1>
+    </div>
+    <div class="content-list content-list-ingenierias">
+        <ul id="ing-career-list-1"></ul>
+        <ul id="ing-career-list-2"></ul>
+    </div>
+
+    <!-- MODAL: CARRERAS (universidad selector) -->
+    <div id="linkModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p class="modal-subtitle">Selecciona la universidad que te gustaría:</p>
+            <div id="linksContainer"></div>
+        </div>
+    </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

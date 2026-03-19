@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario Vocacional - Orientación Vocacional</title>
+    <meta name="description" content="Test de orientación vocacional con 15 preguntas para descubrir tu área profesional ideal.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <a href="menu.html" class="back-link">← Volver al Menú</a>
+    <div class="quiz-container">
+        <h1 class="quiz-title">Cuestionario de Orientación Vocacional</h1>
+        <form id="quiz-form" onsubmit="processQuiz(event)">
+
+            <div class="section-title">Intereses personales</div>
+
+            <div class="question">
+                <p>1.- ¿Qué tipo de actividades disfrutas más en tu tiempo libre?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p1" value="a" required> a) Armar o reparar cosas, experimentar con tecnología.</label>
+                    <label><input type="radio" name="p1" value="b"> b) Ayudar a otras personas o cuidar de su bienestar.</label>
+                    <label><input type="radio" name="p1" value="c"> c) Resolver problemas matemáticos o lógicos.</label>
+                    <label><input type="radio" name="p1" value="d"> d) Organizar, planificar o dirigir proyectos.</label>
+                    <label><input type="radio" name="p1" value="e"> e) Dibujar, diseñar o crear contenido visual.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2.- ¿Qué materias te resultan más interesantes en la escuela?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p2" value="a" required> a) Física, matemáticas, computación.</label>
+                    <label><input type="radio" name="p2" value="b"> b) Biología, química, anatomía.</label>
+                    <label><input type="radio" name="p2" value="c"> c) Historia, comunicación, literatura.</label>
+                    <label><input type="radio" name="p2" value="d"> d) Economía, administración, contabilidad.</label>
+                    <label><input type="radio" name="p2" value="e"> e) Arte, diseño, expresión visual.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3.- ¿Cómo te gustaría que fuera tu entorno laboral ideal?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p3" value="a" required> a) En un laboratorio o taller tecnológico.</label>
+                    <label><input type="radio" name="p3" value="b"> b) En un hospital o clínica.</label>
+                    <label><input type="radio" name="p3" value="c"> c) En una oficina o empresa.</label>
+                    <label><input type="radio" name="p3" value="d"> d) En una escuela o institución social.</label>
+                    <label><input type="radio" name="p3" value="e"> e) En un estudio de diseño o animación.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4.- ¿Qué tipo de proyectos disfrutas más realizar?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p4" value="a" required> a) Experimentos, construcciones o simulaciones.</label>
+                    <label><input type="radio" name="p4" value="b"> b) Actividades de voluntariado o servicio social.</label>
+                    <label><input type="radio" name="p4" value="c"> c) Presentaciones, exposiciones o debates.</label>
+                    <label><input type="radio" name="p4" value="d"> d) Planes de negocio o proyectos financieros.</label>
+                    <label><input type="radio" name="p4" value="e"> e) Diseños artísticos o digitales.</label>
+                </div>
+            </div>
+
+            <div class="section-title">Habilidades y fortalezas</div>
+
+            <div class="question">
+                <p>5.- ¿Qué tipo de tareas se te facilitan más?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p5" value="a" required> a) Analizar datos o resolver problemas técnicos.</label>
+                    <label><input type="radio" name="p5" value="b"> b) Escuchar, comprender y ayudar a los demás.</label>
+                    <label><input type="radio" name="p5" value="c"> c) Explicar ideas o hablar en público.</label>
+                    <label><input type="radio" name="p5" value="d"> d) Organizar, planear y administrar recursos.</label>
+                    <label><input type="radio" name="p5" value="e"> e) Crear o innovar con ideas originales.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6.- ¿Qué habilidades reconocen los demás en ti?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p6" value="a" required> a) Razonamiento lógico y pensamiento crítico.</label>
+                    <label><input type="radio" name="p6" value="b"> b) Empatía y capacidad para escuchar.</label>
+                    <label><input type="radio" name="p6" value="c"> c) Comunicación clara y liderazgo.</label>
+                    <label><input type="radio" name="p6" value="d"> d) Capacidad para tomar decisiones.</label>
+                    <label><input type="radio" name="p6" value="e"> e) Talento artístico o creatividad.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7.- ¿Qué tipo de herramientas prefieres usar?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p7" value="a" required> a) Computadoras, software o aparatos tecnológicos.</label>
+                    <label><input type="radio" name="p7" value="b"> b) Material médico, instrumentos de laboratorio.</label>
+                    <label><input type="radio" name="p7" value="c"> c) Documentos, archivos o informes.</label>
+                    <label><input type="radio" name="p7" value="d"> d) Recursos financieros o bases de datos.</label>
+                    <label><input type="radio" name="p7" value="e"> e) Herramientas de diseño o dibujo.</label>
+                </div>
+            </div>
+
+            <div class="section-title">Valores y motivaciones</div>
+
+            <div class="question">
+                <p>8.- ¿Qué te motiva más a elegir una carrera?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p8" value="a" required> a) Resolver problemas científicos o tecnológicos.</label>
+                    <label><input type="radio" name="p8" value="b"> b) Ayudar a las personas o salvar vidas.</label>
+                    <label><input type="radio" name="p8" value="c"> c) Tener estabilidad económica y reconocimiento.</label>
+                    <label><input type="radio" name="p8" value="d"> d) Liderar o administrar proyectos.</label>
+                    <label><input type="radio" name="p8" value="e"> e) Expresar ideas o emociones creativas.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>9.- ¿Qué te gustaría lograr con tu profesión?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p9" value="a" required> a) Innovar y crear nuevas tecnologías.</label>
+                    <label><input type="radio" name="p9" value="b"> b) Mejorar la calidad de vida de los demás.</label>
+                    <label><input type="radio" name="p9" value="c"> c) Influir en la sociedad o en una organización.</label>
+                    <label><input type="radio" name="p9" value="d"> d) Emprender y dirigir un negocio propio.</label>
+                    <label><input type="radio" name="p9" value="e"> e) Desarrollar tu talento artístico.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10.- ¿Qué tipo de impacto deseas tener en el mundo?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p10" value="a" required> a) Científico o tecnológico.</label>
+                    <label><input type="radio" name="p10" value="b"> b) Humano o social.</label>
+                    <label><input type="radio" name="p10" value="c"> c) Económico o empresarial.</label>
+                    <label><input type="radio" name="p10" value="d"> d) Cultural o creativo.</label>
+                </div>
+            </div>
+
+            <div class="section-title">Preferencias laborales</div>
+
+            <div class="question">
+                <p>11.- ¿Prefieres trabajar…</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p11" value="a" required> a) Con máquinas o programas.</label>
+                    <label><input type="radio" name="p11" value="b"> b) Con personas directamente.</label>
+                    <label><input type="radio" name="p11" value="c"> c) En equipo y con comunicación constante.</label>
+                    <label><input type="radio" name="p11" value="d"> d) De manera independiente.</label>
+                    <label><input type="radio" name="p11" value="e"> e) En un entorno flexible y creativo.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>12.- ¿Qué horario de trabajo preferirías?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p12" value="a" required> a) Fijo y estructurado.</label>
+                    <label><input type="radio" name="p12" value="b"> b) Con guardias o turnos variables.</label>
+                    <label><input type="radio" name="p12" value="c"> c) De oficina o administrativo.</label>
+                    <label><input type="radio" name="p12" value="d"> d) Flexible, según proyectos o inspiración.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>13.- ¿Qué nivel de contacto humano te gustaría tener en tu empleo?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p13" value="a" required> a) Mínimo, enfocándome en tareas técnicas.</label>
+                    <label><input type="radio" name="p13" value="b"> b) Alto, interactuando y ayudando a personas.</label>
+                    <label><input type="radio" name="p13" value="c"> c) Equilibrado, trabajando en equipo.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>14.- ¿Cómo reaccionas ante los problemas o desafíos?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p14" value="a" required> a) Analizo las causas y busco soluciones lógicas.</label>
+                    <label><input type="radio" name="p14" value="b"> b) Busco apoyo y trato de entender las emociones.</label>
+                    <label><input type="radio" name="p14" value="c"> c) Me enfoco en resolverlos con organización.</label>
+                    <label><input type="radio" name="p14" value="d"> d) Uso la creatividad para buscar alternativas.</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>15.- ¿Qué te genera más satisfacción al finalizar un proyecto?</p>
+                <div class="option-group">
+                    <label><input type="radio" name="p15" value="a" required> a) Ver un sistema o producto funcionando correctamente.</label>
+                    <label><input type="radio" name="p15" value="b"> b) Saber que ayudé a alguien o marqué una diferencia.</label>
+                    <label><input type="radio" name="p15" value="c"> c) Haber liderado un equipo hacia un objetivo.</label>
+                    <label><input type="radio" name="p15" value="d"> d) Ver el resultado artístico o visual de mi trabajo.</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Ver Mis Resultados Vocacionales</button>
+        </form>
+    </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
