@@ -1,9 +1,5 @@
 # ORIENTATEC — Plataforma de Orientación Vocacional
 
-![Estado](https://img.shields.io/badge/Estado-En%20Desarrollo-blue)
-![Tecnología](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-orange)
-![Licencia](https://img.shields.io/badge/Licencia-Educativa-green)
-
 ## 📌 Descripción General
 
 **ORIENTATEC** es una plataforma web enfocada en la orientación vocacional y académica, diseñada para apoyar a estudiantes en el proceso de exploración profesional mediante herramientas digitales intuitivas.
