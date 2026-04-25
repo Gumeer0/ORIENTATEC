@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Estudiantil - Orientación Vocacional</title>
+    <meta name="description" content="Foro estudiantil para compartir ideas y experiencias sobre orientación vocacional.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="forum-container">
+        <div class="top-row">
+            <a class="back" href="menu.html">← Volver al Menú</a>
+            <div><strong>Usuario:</strong> <span id="foro-usuario"></span></div>
+        </div>
+        <h1>FORO</h1>
+        <div class="create-post">
+            <form onsubmit="createTopic(event)">
+                <input id="input-titulo" placeholder="Título del tema" required>
+                <textarea id="input-comentario" placeholder="Escribe algo..." required></textarea>
+                <button type="submit">Publicar</button>
+            </form>
+        </div>
+        <div id="topics-list"></div>
+    </div>
+
+    <!-- MODAL: EDITAR TEMA -->
+    <div id="edit-overlay" class="edit-overlay">
+        <div class="edit-box" onclick="event.stopPropagation()">
+            <h3>Editar tema</h3>
+            <input id="edit-titulo" placeholder="Título">
+            <textarea id="edit-contenido" placeholder="Contenido"></textarea>
+            <div class="edit-buttons">
+                <button onclick="submitEdit()">Guardar</button>
+                <button class="cancel" onclick="closeEdit()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: EDITAR RESPUESTA -->
+    <div id="edit-resp-overlay" class="edit-overlay">
+        <div class="edit-box" onclick="event.stopPropagation()">
+            <h3>Editar respuesta</h3>
+            <textarea id="edit-resp-contenido" placeholder="Contenido"></textarea>
+            <div class="edit-buttons">
+                <button onclick="submitEditResponse()">Guardar</button>
+                <button class="cancel" onclick="closeEditResponse()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre tu Camino Profesional</title>
+    <meta name="description" content="Plataforma de orientación vocacional del Tecnológico Nacional de México. Test vocacional, carreras, becas, universidades y foro estudiantil.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-section">
+            <img src="static/tec.png" alt="Logo TecNM">
+            <span>TECNOLÓGICO NACIONAL DE MÉXICO</span>
+        </div>
+        <button class="hamburger" id="hamburger-btn" onclick="toggleNav()">☰</button>
+        <nav id="nav-public">
+            <a href="index.html">Inicio</a>
+            <a href="cuestionario.html" onclick="return requireAuth('cuestionario.html')">Test de orientación</a>
+            <a href="carreras.html">Carreras</a>
+            <a href="becas.html">Becas</a>
+            <a href="universidades.html">Universidades</a>
+            <a href="login.html" class="btn-sesion">Iniciar Sesión</a>
+        </nav>
+    </header>
+
+    <section class="hero-container">
+        <div class="hero-text">
+            <h1>Descubre tu camino profesional</h1>
+            <p>Comienza tu prueba de vocación, responde unas preguntas y descubre tus fortalezas!!</p>
+            <a href="cuestionario.html" class="btn-comenzar" onclick="return requireAuth('cuestionario.html')">Comenzar</a>
+        </div>
+        <div class="hero-image">
+            <img src="static/im.png" alt="Ilustración vocacional">
+        </div>
+    </section>
+
+    <section class="info-cards">
+        <a href="cuestionario.html" class="info-card" onclick="return requireAuth('cuestionario.html')">
+            <img src="static/for.png" alt="Test Vocacional">
+            <strong>Test Vocacional</strong>
+        </a>
+        <a href="carreras.html" class="info-card">
+            <img src="static/gor.png" alt="Carreras">
+            <strong>Carreras</strong>
+        </a>
+        <a href="becas.html" class="info-card">
+            <img src="static/bi.png" alt="Becas">
+            <strong>Becas</strong>
+        </a>
+    </section>
+
+<script src="js/app.js"></script>
+</body>
+</html>
