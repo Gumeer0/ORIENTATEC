@@ -289,7 +289,7 @@ function getCurrentPage() {
 // ============================================================
 // PROTECCIÓN DE RUTAS (autenticación)
 // ============================================================
-const PROTECTED_PAGES = ['menu', 'cuestionario', 'foro', 'resultados'];
+const PROTECTED_PAGES = ['menu', 'cuestionario', 'foro', 'resultados', 'perfil', 'chat', 'admin'];
 
 function requireAuth(targetUrl) {
     if (!currentUser) {
@@ -631,6 +631,34 @@ function showLinks(title, careerData) {
 
             linksContainer.appendChild(button);
         });
+
+        // Add Favorite Button
+        const favBtn = document.createElement('button');
+        favBtn.id = 'fav-btn-modal';
+        favBtn.style.marginTop = '15px';
+        favBtn.style.background = '#f59e0b';
+        favBtn.style.color = 'white';
+        favBtn.style.border = 'none';
+        favBtn.style.padding = '10px 15px';
+        favBtn.style.borderRadius = '8px';
+        favBtn.style.cursor = 'pointer';
+        favBtn.style.fontWeight = 'bold';
+        favBtn.textContent = '⭐ Guardar en Favoritos';
+        favBtn.onclick = () => toggleFavorite(title);
+        
+        // Check if already in favorites
+        if (currentUser) {
+            loadFirebase().then(() => {
+                let emailId = currentUser.includes('@') ? currentUser : currentUser + "@vocacional.com";
+                firebase.firestore().collection('users').doc(emailId).get().then(doc => {
+                    if (doc.exists && doc.data().favoritos && doc.data().favoritos.includes(title)) {
+                        favBtn.textContent = '⭐ Guardada';
+                    }
+                });
+            });
+        }
+
+        linksContainer.appendChild(favBtn);
     }
 
     modal.classList.add('show');
@@ -667,9 +695,15 @@ async function renderForum() {
     container.innerHTML = '';
 
     // Ordenar por id descendente (más reciente primero)
-    const sorted = [...topics].sort((a, b) => b.id - a.id);
+    window.currentTopicsForFilter = [...topics].sort((a, b) => b.id - a.id);
+    renderTopicsList(window.currentTopicsForFilter);
+}
 
-    sorted.forEach(tema => {
+function renderTopicsList(topicsToRender) {
+    const container = document.getElementById('topics-list');
+    container.innerHTML = '';
+
+    topicsToRender.forEach(tema => {
         const wrapper = document.createElement('div');
         wrapper.className = 'topic-wrapper';
         wrapper.id = 'topic-' + tema.id;
@@ -705,6 +739,10 @@ async function renderForum() {
             });
         }
 
+        const likesCount = tema.likes ? tema.likes.length : 0;
+        const hasLiked = tema.likes && tema.likes.includes(currentUser);
+        const likeBtnStyle = hasLiked ? 'color: #ef4444; font-weight: bold;' : 'color: #64748b;';
+
         wrapper.innerHTML = `
             <div class="topic-card">
                 <div class="topic-title">
@@ -714,7 +752,8 @@ async function renderForum() {
                         <div>Publicado por <b>${escapeHtml(tema.autor)}</b> · ${tema.fecha.substring(0, 16)}</div>
                     </div>
                 </div>
-                <div>
+                <div style="display: flex; gap: 5px; align-items: center; flex-wrap: wrap;">
+                    <button class="btn-small" style="${likeBtnStyle}" onclick="toggleLike(${tema.id})">❤️ ${likesCount}</button>
                     <button class="btn-small" onclick="toggleResponses('responses-${tema.id}')">${respCount} resp</button>
                     ${editBtn}
                     <button class="btn-small" onclick="scrollToReply(${tema.id})">Responder</button>
@@ -731,6 +770,42 @@ async function renderForum() {
 
         container.appendChild(wrapper);
     });
+}
+
+function filterForum(query) {
+    if (!window.currentTopicsForFilter) return;
+    const q = query.toLowerCase();
+    const filtered = window.currentTopicsForFilter.filter(t => 
+        t.titulo.toLowerCase().includes(q) || 
+        t.contenido.toLowerCase().includes(q) ||
+        t.autor.toLowerCase().includes(q)
+    );
+    renderTopicsList(filtered);
+}
+
+async function toggleLike(temaId) {
+    if (!currentUser) {
+        alert("Debes iniciar sesión para dar me gusta.");
+        return;
+    }
+    try {
+        const topics = await getTopics();
+        const tema = topics.find(t => t.id === temaId);
+        if (!tema) return;
+        
+        if (!tema.likes) tema.likes = [];
+        const index = tema.likes.indexOf(currentUser);
+        if (index === -1) {
+            tema.likes.push(currentUser); // Add like
+        } else {
+            tema.likes.splice(index, 1); // Remove like
+        }
+        await saveTopic(tema);
+        await renderForum(); // Re-render to update counts
+    } catch(e) {
+        console.error(e);
+        alert("Error al actualizar me gusta: " + e.message);
+    }
 }
 
 function escapeHtml(text) {
@@ -957,6 +1032,10 @@ window.addEventListener('DOMContentLoaded', function() {
                     }
                 } catch(e) {}
             }
+            if (currentUser === 'admin@vocacional.com') {
+                const adminCard = document.getElementById('admin-card');
+                if (adminCard) adminCard.style.display = 'flex';
+            }
             break;
 
         case 'cuestionario':
@@ -982,6 +1061,18 @@ window.addEventListener('DOMContentLoaded', function() {
         case 'foro':
             renderForum();
             break;
+
+        case 'perfil':
+            renderProfile();
+            break;
+
+        case 'chat':
+            initChat();
+            break;
+
+        case 'admin':
+            initAdmin();
+            break;
     }
 
     // Inicializar modales de edición del foro (solo en foro.html)
@@ -998,3 +1089,224 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ============================================================
+// PERFIL Y FAVORITOS
+// ============================================================
+async function renderProfile() {
+    if (!currentUser) {
+        window.location.href = 'login.html';
+        return;
+    }
+    document.getElementById('profile-name').textContent = currentUser;
+    document.getElementById('profile-email').textContent = currentUser;
+    document.getElementById('profile-avatar-letter').textContent = currentUser.charAt(0).toUpperCase();
+
+    const googleData = localStorage.getItem('googleUser');
+    if (googleData) {
+        try {
+            const gUser = JSON.parse(googleData);
+            if (gUser.picture) {
+                const img = document.getElementById('profile-avatar-img');
+                img.src = gUser.picture;
+                img.style.display = 'flex';
+                document.getElementById('profile-avatar-letter').style.display = 'none';
+            }
+        } catch(e) {}
+    }
+
+    try {
+        await loadFirebase();
+        let emailId = currentUser.includes('@') ? currentUser : currentUser + "@vocacional.com";
+        const userDoc = await firebase.firestore().collection('users').doc(emailId).get();
+        const userData = userDoc.data() || {};
+
+        if (userData.lastQuizResult && AREAS[userData.lastQuizResult]) {
+            document.getElementById('profile-test-result').textContent = 'Área sugerida: ' + AREAS[userData.lastQuizResult].nombre;
+        }
+
+        const favList = document.getElementById('favorites-list');
+        favList.innerHTML = '';
+        if (userData.favoritos && userData.favoritos.length > 0) {
+            userData.favoritos.forEach(fav => {
+                favList.innerHTML += `<li>
+                    <span>${escapeHtml(fav)}</span>
+                    <button class="btn-remove" onclick="toggleFavorite('${fav}', true)">Eliminar</button>
+                </li>`;
+            });
+        } else {
+            favList.innerHTML = '<div class="empty-state">Aún no tienes carreras guardadas.</div>';
+        }
+
+        const topics = await getTopics();
+        const myTopics = topics.filter(t => t.autor === currentUser);
+        const postsList = document.getElementById('posts-list');
+        postsList.innerHTML = '';
+        if (myTopics.length > 0) {
+            myTopics.forEach(t => {
+                postsList.innerHTML += `<li>
+                    <span><strong>${escapeHtml(t.titulo)}</strong> - ${t.fecha.substring(0, 10)}</span>
+                    <a href="foro.html" style="color: #2563eb; text-decoration: none; font-weight: 500;">Ver foro</a>
+                </li>`;
+            });
+        } else {
+            postsList.innerHTML = '<div class="empty-state">Aún no has publicado nada.</div>';
+        }
+
+    } catch (error) {
+        console.error("Error cargando perfil", error);
+    }
+}
+
+async function toggleFavorite(carrera, reloadProfile = false) {
+    if (!currentUser) {
+        alert("Inicia sesión para guardar favoritos.");
+        return;
+    }
+    try {
+        await loadFirebase();
+        let emailId = currentUser.includes('@') ? currentUser : currentUser + "@vocacional.com";
+        const docRef = firebase.firestore().collection('users').doc(emailId);
+        const doc = await docRef.get();
+        let favs = [];
+        if (doc.exists && doc.data().favoritos) {
+            favs = doc.data().favoritos;
+        }
+
+        const index = favs.indexOf(carrera);
+        if (index === -1) {
+            favs.push(carrera);
+            if (!reloadProfile) alert("Carrera guardada en favoritos.");
+        } else {
+            favs.splice(index, 1);
+            if (!reloadProfile) alert("Carrera eliminada de favoritos.");
+        }
+
+        await docRef.set({ favoritos: favs }, { merge: true });
+        
+        if (reloadProfile) {
+            renderProfile();
+        } else {
+            const btn = document.getElementById('fav-btn-modal');
+            if (btn) btn.textContent = favs.includes(carrera) ? '⭐ Guardada' : '⭐ Guardar en Favoritos';
+        }
+    } catch(e) {
+        console.error(e);
+        alert("Error al guardar favorito: " + e.message);
+    }
+}
+
+// ============================================================
+// CHAT GLOBAL
+// ============================================================
+let chatUnsubscribe = null;
+
+async function initChat() {
+    if (!currentUser) return;
+    document.getElementById('chat-user').textContent = currentUser;
+    const msgContainer = document.getElementById('chat-messages');
+    
+    try {
+        await loadFirebase();
+        const db = firebase.firestore();
+        chatUnsubscribe = db.collection('messages')
+            .orderBy('fecha', 'asc')
+            .limit(100)
+            .onSnapshot(snapshot => {
+                msgContainer.innerHTML = '';
+                if (snapshot.empty) {
+                    msgContainer.innerHTML = '<div style="text-align: center; color: #94a3b8; margin-top: 20px;">No hay mensajes aún. ¡Sé el primero en saludar!</div>';
+                    return;
+                }
+                snapshot.forEach(doc => {
+                    const msg = doc.data();
+                    const isSelf = msg.autor === currentUser;
+                    const cssClass = isSelf ? 'msg-self' : 'msg-other';
+                    msgContainer.innerHTML += `
+                        <div class="message ${cssClass}">
+                            ${!isSelf ? '<div class="msg-author">' + escapeHtml(msg.autor) + '</div>' : ''}
+                            <div>${escapeHtml(msg.contenido)}</div>
+                            <div class="msg-time">${new Date(msg.fecha).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        </div>
+                    `;
+                });
+                msgContainer.scrollTop = msgContainer.scrollHeight;
+            }, error => {
+                console.error("Chat error", error);
+                msgContainer.innerHTML = '<div style="color:red; text-align:center; margin-top:20px;">Error al cargar el chat: Verifica las reglas de Firebase.</div>';
+            });
+    } catch(e) {
+        msgContainer.innerHTML = `<div style="color:red; text-align:center;">Error al inicializar Firebase: ${e.message}</div>`;
+    }
+}
+
+async function sendChatMessage(event) {
+    event.preventDefault();
+    const input = document.getElementById('chat-input');
+    const txt = input.value.trim();
+    if (!txt) return;
+
+    try {
+        await loadFirebase();
+        await firebase.firestore().collection('messages').add({
+            autor: currentUser,
+            contenido: txt,
+            fecha: new Date().toISOString()
+        });
+        input.value = '';
+    } catch(e) {
+        console.error(e);
+        alert("No se pudo enviar el mensaje: " + e.message);
+    }
+}
+
+// ============================================================
+// PANEL ADMIN
+// ============================================================
+async function initAdmin() {
+    if (currentUser !== 'admin@vocacional.com') {
+        document.getElementById('admin-content').style.display = 'none';
+        document.getElementById('admin-error').style.display = 'block';
+        return;
+    }
+
+    document.getElementById('admin-content').style.display = 'block';
+    const tbody = document.getElementById('admin-topics-list');
+    
+    try {
+        const topics = await getTopics();
+        const sorted = [...topics].sort((a, b) => b.id - a.id);
+        tbody.innerHTML = '';
+        if (sorted.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay temas</td></tr>';
+            return;
+        }
+
+        sorted.forEach(t => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${t.id}</td>
+                    <td><strong>${escapeHtml(t.titulo)}</strong></td>
+                    <td>${escapeHtml(t.autor)}</td>
+                    <td>${t.fecha.substring(0, 10)}</td>
+                    <td><button class="btn-danger" onclick="deleteTopic(${t.id})">Eliminar</button></td>
+                </tr>
+            `;
+        });
+    } catch(e) {
+        tbody.innerHTML = '<tr><td colspan="5" style="color:red;text-align:center;">Error: ' + e.message + '</td></tr>';
+    }
+}
+
+async function deleteTopic(id) {
+    if (!confirm("¿Estás seguro de eliminar este tema y todas sus respuestas?")) return;
+    try {
+        await loadFirebase();
+        await firebase.firestore().collection('topics').doc(id.toString()).delete();
+        alert("Tema eliminado correctamente.");
+        initAdmin();
+    } catch(e) {
+        console.error(e);
+        alert("Error al eliminar tema: " + e.message);
+    }
+}

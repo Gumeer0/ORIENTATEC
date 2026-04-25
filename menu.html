@@ -17,6 +17,7 @@
             <span id="usuario-btn" onclick="toggleUserMenu()"></span>
         </div>
         <div id="user-menu">
+            <a href="perfil.html">Mi Perfil</a>
             <a href="#" onclick="logout(event)">Cerrar Sesión</a>
         </div>
     </header>
@@ -45,6 +46,15 @@
             <img src="static/foro.png" alt="Foros">
             <h3>Foros</h3>
             <p>Comparte tus ideas</p>
+        </a>
+        <a href="chat.html" class="menu-card">
+            <img src="static/com.png" alt="Chat Global" onerror="this.src='static/for.png'">
+            <h3>Chat Global</h3>
+            <p>Habla en vivo con otros estudiantes</p>
+        </a>
+        <a href="admin.html" class="menu-card" id="admin-card" style="display: none; background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">
+            <h3 style="color:white;">Panel Admin</h3>
+            <p style="color:#cbd5e1;">Gestión de la plataforma</p>
         </a>
     </div>
 

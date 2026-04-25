@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Global - Orientación Vocacional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { display: flex; flex-direction: column; height: 100vh; margin: 0; background-color: #f1f5f9; }
+        .top-row { padding: 15px 20px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .chat-container { flex: 1; display: flex; flex-direction: column; max-width: 900px; margin: 0 auto; width: 100%; background: white; border-left: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; }
+        .chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .message { max-width: 75%; padding: 12px 16px; border-radius: 12px; font-size: 0.95rem; line-height: 1.4; position: relative; }
+        .msg-other { background: #f1f5f9; color: #1e293b; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .msg-self { background: #2563eb; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .msg-author { font-size: 0.75rem; font-weight: 600; margin-bottom: 4px; opacity: 0.8; }
+        .msg-time { font-size: 0.7rem; opacity: 0.6; text-align: right; margin-top: 4px; }
+        .chat-input-area { padding: 15px 20px; background: white; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+        .chat-input-area input { flex: 1; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 24px; outline: none; font-family: 'Inter', sans-serif; }
+        .chat-input-area input:focus { border-color: #2563eb; }
+        .chat-input-area button { background: #2563eb; color: white; border: none; padding: 0 20px; border-radius: 24px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        .chat-input-area button:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <div class="top-row">
+        <a class="back" href="menu.html">← Volver</a>
+        <div style="font-weight: 600; color: #0f172a;">💬 Chat Global Estudiantil</div>
+        <div style="font-size: 0.9rem; color: #64748b;"><span id="chat-user"></span></div>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+            <div style="text-align: center; color: #94a3b8; font-size: 0.9rem; margin-top: 20px;">Cargando mensajes...</div>
+        </div>
+        <form class="chat-input-area" id="chat-form" onsubmit="sendChatMessage(event)">
+            <input type="text" id="chat-input" placeholder="Escribe un mensaje..." required autocomplete="off">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

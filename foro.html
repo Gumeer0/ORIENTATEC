@@ -17,6 +17,9 @@
             <div><strong>Usuario:</strong> <span id="foro-usuario"></span></div>
         </div>
         <h1>FORO</h1>
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="search-foro" placeholder="🔍 Buscar temas por título o contenido..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; outline: none; font-family: inherit;" oninput="filterForum(this.value)">
+        </div>
         <div class="create-post">
             <form onsubmit="createTopic(event)">
                 <input id="input-titulo" placeholder="Título del tema" required>
