@@ -1,96 +1,105 @@
-# 🎓 ORIENTATEC
+# ORIENTATEC — Plataforma de Orientación Vocacional
 
-**ORIENTATEC** es una plataforma web de orientación vocacional diseñada para ayudar a estudiantes a descubrir su camino profesional mediante información académica, cuestionarios, becas y recursos educativos.
+![Estado](https://img.shields.io/badge/Estado-En%20Desarrollo-blue)
+![Tecnología](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-orange)
+![Licencia](https://img.shields.io/badge/Licencia-Educativa-green)
 
-Este proyecto fue desarrollado como una solución enfocada en la exploración de carreras universitarias, facilitando el acceso a información relevante para estudiantes que buscan tomar decisiones sobre su futuro académico.
+## 📌 Descripción General
 
----
+**ORIENTATEC** es una plataforma web enfocada en la orientación vocacional y académica, diseñada para apoyar a estudiantes en el proceso de exploración profesional mediante herramientas digitales intuitivas.
 
-# 🚀 Características Principales
+El proyecto proporciona acceso organizado a información sobre carreras universitarias, becas, áreas de estudio y cuestionarios vocacionales, permitiendo a los usuarios tomar decisiones informadas sobre su futuro académico y profesional.
 
-* ✅ Plataforma web responsiva y moderna
-* ✅ Test o cuestionario vocacional
-* ✅ Información sobre carreras universitarias
-* ✅ Categorías de ingenierías, licenciaturas y medicina
-* ✅ Sección de becas
-* ✅ Foro estudiantil
-* ✅ Panel administrativo
-* ✅ Interfaz intuitiva y amigable
-* ✅ Diseño visual atractivo
+La plataforma busca centralizar recursos educativos dentro de una experiencia moderna, accesible y fácil de navegar.
 
 ---
 
-# 🛠️ Tecnologías Utilizadas
+## 🎯 Objetivo del Proyecto
 
-Este proyecto fue desarrollado utilizando:
-
-* **HTML5** → Estructura del sitio
-* **CSS3** → Diseño y estilos
-* **JavaScript** → Funcionalidad dinámica
-* **Google Fonts** → Tipografía moderna
+Desarrollar una solución web que facilite el proceso de orientación educativa mediante el acceso a información académica estructurada y herramientas de autoevaluación.
 
 ---
 
-# 📂 Estructura del Proyecto
+## ✨ Funcionalidades Principales
+
+* Sistema de orientación vocacional
+* Cuestionario para identificación de intereses profesionales
+* Catálogo de carreras universitarias
+* Clasificación por áreas académicas
+* Información sobre becas y apoyos educativos
+* Foro o espacio de interacción estudiantil
+* Panel administrativo
+* Navegación responsiva
+* Diseño moderno y accesible
+
+---
+
+## 🧩 Arquitectura del Proyecto
 
 ```bash
 ORIENTATEC-main/
 │
-├── index.html                  # Página principal
-├── admin.html                  # Panel administrativo
-├── becas.html                  # Información de becas
-├── carreras.html               # Vista general de carreras
-├── carreras_ingenierias.html   # Carreras de ingeniería
-├── carreras_licenciaturas.html # Carreras de licenciatura
-├── carreras_medicina.html      # Carreras del área médica
-├── chat.html                   # Chat o interacción
-├── cuestionario.html           # Test vocacional
-├── foro.html                   # Foro estudiantil
+├── index.html
+├── admin.html
+├── becas.html
+├── carreras.html
+├── carreras_ingenierias.html
+├── carreras_licenciaturas.html
+├── carreras_medicina.html
+├── cuestionario.html
+├── foro.html
+├── chat.html
 │
 ├── css/
-│   └── styles.css              # Estilos principales
+│   └── styles.css
 │
 ├── js/
-│   └── app.js                  # Funciones JavaScript
+│   └── app.js
 │
-└── static/                     # Recursos multimedia
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── multimedia/
+│
+└── README.md
 ```
 
 ---
 
-# 📸 Vista General del Proyecto
+## 🛠️ Tecnologías Implementadas
 
-ORIENTATEC ofrece una experiencia orientada a estudiantes interesados en conocer opciones académicas y profesionales mediante una interfaz moderna y organizada.
-
----
-
-# 📌 Funcionalidades
-
-### 🎯 Orientación Vocacional
-
-Permite a los estudiantes explorar carreras y áreas de estudio.
-
-### 📝 Cuestionario Vocacional
-
-Ayuda a descubrir áreas profesionales compatibles con intereses personales.
-
-### 🎓 Información Académica
-
-Muestra opciones de carreras organizadas por categorías.
-
-### 💬 Foro
-
-Espacio de interacción entre estudiantes.
-
-### 🏛️ Becas
-
-Información útil para apoyo académico.
+| Tecnología   | Descripción                          |
+| ------------ | ------------------------------------ |
+| HTML5        | Estructura y semántica del sitio     |
+| CSS3         | Diseño visual y responsividad        |
+| JavaScript   | Funcionalidad dinámica e interacción |
+| Google Fonts | Tipografía moderna                   |
 
 ---
 
-# 🌐 Posible Implementación
+## 🧪 Casos de Uso
 
-Este proyecto puede implementarse en plataformas como:
+### 👨‍🎓 Estudiantes
+
+* Explorar opciones académicas
+* Realizar cuestionarios vocacionales
+* Consultar información educativa
+
+### 🏫 Instituciones Educativas
+
+* Ofrecer recursos de orientación
+* Difundir información académica
+
+### 👨‍💼 Administradores
+
+* Gestionar contenido del sitio
+* Actualizar información relevante
+
+---
+
+## 🌐 Despliegue
+
+El proyecto puede implementarse en servicios de hosting como:
 
 * GitHub Pages
 * Netlify
@@ -99,20 +108,33 @@ Este proyecto puede implementarse en plataformas como:
 
 ---
 
-# 👨‍💻 Autor
+## 📈 Escalabilidad
+
+Posibles mejoras futuras:
+
+* Integración con bases de datos
+* Sistema de autenticación
+* Panel de administración avanzado
+* Registro de usuarios
+* Recomendaciones personalizadas
+* Integración con APIs educativas
+
+---
+
+## 👨‍💻 Autor
 
 **Gumercindo Vera Santiago**
 
-Proyecto académico enfocado en orientación vocacional y exploración profesional.
+Proyecto académico orientado al desarrollo de soluciones digitales para orientación vocacional.
 
 ---
 
-# 📄 Licencia
+## 📄 Licencia
 
-Este proyecto puede utilizarse con fines educativos y académicos.
+Este proyecto está destinado a fines educativos y académicos.
 
 ---
 
-# ⭐ Recomendación
+## ⭐ Reconocimiento
 
-Si este proyecto te ayudó o te gustó, considera darle una estrella ⭐ en GitHub.
+Si este proyecto resulta útil o interesante, puedes apoyarlo dejando una estrella en GitHub.
