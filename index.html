@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descubre tu Camino Profesional</title>
+    <title>ORIENTATEC</title>
     <meta name="description" content="Plataforma de orientación vocacional del Tecnológico Nacional de México. Test vocacional, carreras, becas, universidades y foro estudiantil.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,16 +20,17 @@
         <nav id="nav-public">
             <a href="index.html">Inicio</a>
             <a href="cuestionario.html" onclick="return requireAuth('cuestionario.html')">Test de orientación</a>
-            <a href="carreras.html">Carreras</a>
-            <a href="becas.html">Becas</a>
-            <a href="universidades.html">Universidades</a>
+            <a href="carreras.html" onclick="return requireAuth('carreras.html')">Carreras</a>
+            <a href="becas.html" onclick="return requireAuth('becas.html')">Becas</a>
+            <a href="universidades.html" onclick="return requireAuth('universidades.html')">Universidades</a>
             <a href="login.html" class="btn-sesion">Iniciar Sesión</a>
         </nav>
     </header>
 
     <section class="hero-container">
         <div class="hero-text">
-            <h1>Descubre tu camino profesional</h1>
+            <h1>ORIENTATEC</h1>
+            <h2>Descubre tu camino profesional</h2>
             <p>Comienza tu prueba de vocación, responde unas preguntas y descubre tus fortalezas!!</p>
             <a href="cuestionario.html" class="btn-comenzar" onclick="return requireAuth('cuestionario.html')">Comenzar</a>
         </div>
@@ -43,11 +44,11 @@
             <img src="static/for.png" alt="Test Vocacional">
             <strong>Test Vocacional</strong>
         </a>
-        <a href="carreras.html" class="info-card">
+        <a href="carreras.html" class="info-card" onclick="return requireAuth('carreras.html')">
             <img src="static/gor.png" alt="Carreras">
             <strong>Carreras</strong>
         </a>
-        <a href="becas.html" class="info-card">
+        <a href="becas.html" class="info-card" onclick="return requireAuth('becas.html')">
             <img src="static/bi.png" alt="Becas">
             <strong>Becas</strong>
         </a>
