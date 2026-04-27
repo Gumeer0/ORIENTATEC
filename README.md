@@ -33,7 +33,7 @@ Desarrollar una solución web que facilite el proceso de orientación educativa 
 ## 🧩 Arquitectura del Proyecto
 
 ```bash
-ORIENTATEC-main/
+ORIENTATEC
 │
 ├── index.html
 ├── admin.html
